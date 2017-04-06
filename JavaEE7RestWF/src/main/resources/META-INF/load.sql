@@ -1,0 +1,5 @@
+INSERT INTO SuperUser(id, name, surname) VALUES (123, 'Stavros', 'Tsourdos')
+INSERT INTO SuperUser(id, name, surname) VALUES (223, 'Stavros1', 'Tsourdos1')
+INSERT INTO SuperUser(id, name, surname) VALUES (323, 'Stavros2', 'Tsourdos2')
+INSERT INTO SuperUser(id, name, surname) VALUES (423, 'Stavros3', 'Tsourdos3')
+INSERT INTO SuperUser(id, name, surname) VALUES (523, 'Stavros4', 'Tsourdos4')

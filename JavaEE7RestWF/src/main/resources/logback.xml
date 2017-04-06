@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder><!-- Sets the pattern for the logging messages -->
+            <pattern>%d{HH:mm:ss.SSS} [%thread] ----- %highlight(%-5level) %logger{36}:%L - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- By default, this level is equal to ROOT level (or DEBUG, see below)
+    Possible values: TRACE (see all), DEBUG (see debug, info, warn, error),
+    INFO (see info, warn, error), WARN (see warn, error), ERROR (see only error) and OFF -->
+    <logger name="com.tsourdos" level="INFO"
+		additivity="false">
+		<appender-ref ref="STDOUT" />
+	</logger>
+
+    <!-- By default, this level is DEBUG -->
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>
