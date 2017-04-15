@@ -1,0 +1,10 @@
+/target
+/.settings
+/.apt_generated
+
+nb-configuration.xml
+
+.classpath
+.factorypath
+.project
+.springBeans
