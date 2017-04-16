@@ -1,10 +1,9 @@
 package com.repository;
 
-import com.entities.Flight;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-@Repository
-public interface FlightRepository extends CrudRepository<Flight, Long> {
+import com.entities.Flight;
+
+public interface FlightRepository extends PagingAndSortingRepository<Flight, Long> {
 
 }

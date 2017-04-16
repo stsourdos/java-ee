@@ -17,12 +17,12 @@ import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api")
-public class FlightsController extends AbstractRestHandler {
+public class FlightsController {
 
     @Autowired
     MyService myService;
 
-    private static final Logger log = LoggerFactory.getLogger(FlightsController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(FlightsController.class);
 
     @RequestMapping(value = "/flights", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public Iterable<Flight> readFlights() {
@@ -30,8 +30,8 @@ public class FlightsController extends AbstractRestHandler {
     }
 
     @RequestMapping(value = "/flights/{id}", method = RequestMethod.GET, produces = {"application/json", "application/xml"})
-    public Flight readFlight(@PathVariable int id) {
-        return entityExists(myService.readFlight(id));
+    public Flight readFlight(@PathVariable long id) {
+        return myService.readFlight(id);
     }
 
     @RequestMapping(value = "/flights", method = RequestMethod.POST, consumes = "application/json", produces = {"application/json", "application/xml"})
@@ -41,8 +41,8 @@ public class FlightsController extends AbstractRestHandler {
     }
 
     @RequestMapping(value = "/flights/{id}", method = RequestMethod.DELETE, produces = {"application/json", "application/xml"})
-    public ResponseEntity deleteFlight(@PathVariable int id) {
-        entityExists(myService.readFlight(id));
+    public ResponseEntity deleteFlight(@PathVariable long id) {
+        myService.readFlight(id);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 

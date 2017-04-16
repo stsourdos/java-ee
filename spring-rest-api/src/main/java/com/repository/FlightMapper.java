@@ -12,7 +12,7 @@ import com.utils.MyUtils;
 
 final class FlightMapper implements RowMapper<Flight> {
 
-    private final Logger log = LoggerFactory.getLogger(FlightRepository.class);
+    private final Logger log = LoggerFactory.getLogger(FlightMapper.class);
 
     public Flight mapRow(ResultSet rs, int rowNum) throws SQLException {
         log.warn("++++++" + Integer.toString(rowNum));
