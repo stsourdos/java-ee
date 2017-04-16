@@ -3,6 +3,7 @@
 /.apt_generated
 
 nb-configuration.xml
+nbactions.xml
 
 .classpath
 .factorypath
