@@ -1,12 +1,15 @@
 package com.tsourdos.kafka.producer;
 
 import com.google.common.io.Resources;
+import com.tsourdos.kafka.consumer.SimpleConsumer;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.Scanner;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -14,19 +17,18 @@ import org.apache.kafka.clients.producer.ProducerRecord;
  */
 public class SimpleProducer {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(SimpleConsumer.class);
+    private static final String CONFIG_FILE = "producer.properties";
+
     public static void main(String[] args) throws Exception {
 
-        Properties properties = new Properties();
-        try (InputStream props = Resources.getResource("producer.properties").openStream()) {
-            properties.load(props);
-        } catch (IOException | IllegalArgumentException exception) {
-            properties = getDefaultProperties();
-        }
+        Properties properties = loadApplicationProperties();
 
         String topicName = properties.getProperty("topic");
+        properties.remove("topic");
 
         try (KafkaProducer<String, String> producer = new KafkaProducer(properties)) {
-            System.out.println("To exit hit Ctrl+D/Z or type: 'quit'");
+            LOGGER.info("To exit hit Ctrl+D/Z or type: 'quit'");
             Scanner scanner = new Scanner(System.in);
             int i = 1;
             while (scanner.hasNextLine()) {
@@ -35,13 +37,26 @@ public class SimpleProducer {
                     break;
                 }
                 producer.send(new ProducerRecord(topicName, Integer.toString(i), line));
-                System.out.println("Message sent successfully: " + line);
+                LOGGER.info("Message sent successfully: {}", line);
                 i++;
             }
         }
     }
 
-    private static Properties getDefaultProperties () {
+    private static Properties loadApplicationProperties() {
+        Properties properties = new Properties();
+
+        try (InputStream props = Resources.getResource(CONFIG_FILE).openStream()) {
+            properties.load(props);
+        } catch (IOException | IllegalArgumentException exception) {
+            LOGGER.warn("{} not found, with message: {}, loading defaults", CONFIG_FILE, exception.getMessage());
+            properties = getDefaultProperties();
+        }
+
+        return properties;
+    }
+
+    private static Properties getDefaultProperties() {
         Properties props = new Properties();
 
         props.put("topic", "example");

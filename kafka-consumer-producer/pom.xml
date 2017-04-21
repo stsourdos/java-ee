@@ -18,6 +18,17 @@
             <artifactId>guava</artifactId>
             <version>19.0</version>
         </dependency>
+        
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.24</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.24</version>
+        </dependency>
     </dependencies>
     
     <properties>
@@ -46,6 +57,15 @@
                 </configuration>
             </plugin>
         </plugins>
+        <!--<resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>consumer.properties</exclude>
+                    <exclude>producer.properties</exclude>
+                </excludes>
+            </resource>
+        </resources>-->
     </build>
     
 </project>
