@@ -39,7 +39,7 @@ A switch works with the byte, short, char, and int primitive data types. It also
 #### Array Initialization
 
 All the below are valid:
-````
+```
 int[] data = {10, 20, 30, 40, 50, 60, 71, 80, 90, 91};
 
 int[] data1;
