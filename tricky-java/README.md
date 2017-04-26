@@ -66,16 +66,20 @@ data4 = new int[][]{{1, 2, 3}, {4, 5, 6}};
 You cannot override a private or static method in Java.
 ```
 public Building getExtendedBuilding() {
-  // Compile time error
-  @Override
-  public static void printAllWindows() {
-      System.out.println("Overriden Window");
-  }
-  // Compile time error
-  @Override
-  private void printHiddenWindow() {
-      System.out.println("Overriden Hidden Window");
-  }
+  Building building = new Building() {
+
+    // Compile time error
+    @Override
+    public static void printAllWindows() {
+        System.out.println("Overriden Window");
+    }
+    // Compile time error
+    @Override
+    private void printHiddenWindow() {
+        System.out.println("Overriden Hidden Window");
+    }
+
+  };
 }
 class Building {
   public static void printAllWindows() {
