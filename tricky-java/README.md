@@ -94,4 +94,40 @@ class Building {
 
 #### When instansiating
 
-An abstract class / interface cannot be instanciated.
+An abstract class / interface cannot be instantiated.
+
+#### Diamond Problem
+
+This problem arises when an implementation class inherits from 2 different parent entities (interface/class), methods implementation with the same signature.
+
+To illustrate this, we use an example, applicable for all Java versions:
+
+```
+abstract class SuperClass {
+    public abstract void noise();
+}
+
+class Cow extends SuperClass {
+    @Override
+    public void noise() {
+        System.out.println("moooo");
+    }
+}
+
+class Bird extends SuperClass {
+    @Override
+    public void noise() {
+        System.out.println("tsiou tsiou");
+    }
+}
+
+/**
+ * Compile Time Error
+ */
+class Child extends Cow, Bird {
+	public void test(){
+		//calling super class method
+		noise();
+	}
+}
+```
