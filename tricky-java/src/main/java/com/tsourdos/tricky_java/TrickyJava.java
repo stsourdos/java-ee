@@ -79,4 +79,13 @@ public class TrickyJava {
     private static enum SwitchEnum {
         THIS, THAT
     }
+
+    /**
+     * int + + int = int + int
+     * int - - int = int + int
+     * @return 33
+     */
+    private int additionOfIntegers() {
+        return 10 + + 11 - - 12;
+    }
 }

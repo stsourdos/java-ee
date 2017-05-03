@@ -92,9 +92,13 @@ class Building {
 }
 ```
 
-#### When instansiating
+#### True statements about Interfaces
 
-An abstract class / interface cannot be instantiated.
+- An abstract class / interface cannot be instantiated.
+- An interface can have data members, which are constants even if you don't use ```static final```
+- An interface can have method implementations of type: ```default``` and ```static```, since Java 8.
+- ```default``` method may be Overridden in child classes, but ```static``` cannot.
+- A class can extend multiple interfaces, but beware of the Diamond Problem.
 
 #### Diamond Problem
 

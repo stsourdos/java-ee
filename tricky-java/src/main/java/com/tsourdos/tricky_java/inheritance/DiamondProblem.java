@@ -28,7 +28,16 @@ interface DogInterface {
     }
 }
 
+/**
+ * Interface may have data members. These data members are static and final even if you don't say so.
+ */
 interface CatInterface {
+
+    public String TYPE = "Cat";
+
+    static double signum(double value) {
+        return Math.signum(value);
+    }
 
     default public void noise() {
         System.out.println("Interface2's foo");
