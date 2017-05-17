@@ -39,13 +39,16 @@ interface CatInterface {
         return Math.signum(value);
     }
 
+    /**
+     * Cannot provide a default implementation for any of the methods of the Object class (equals, hashCode.).
+     */
     default public void noise() {
         System.out.println("Interface2's foo");
     }
 }
 
 /**
- * Case-3: If a base class and a base interface define methods with the same signature, the method definition
+ * Case-2: If a base class and a base interface define methods with the same signature, the method definition
  * in the class is used and the interface definition is ignored. No compile time error. Class wins rule.
  */
 class DiamondProblem2 extends DogClass implements DogInterface {
