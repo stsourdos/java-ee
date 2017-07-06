@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.entities.Flight;
 import com.service.MyService;
+import org.springframework.context.annotation.Description;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -24,6 +25,12 @@ public class FlightsController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FlightsController.class);
 
+//    @ApiOperation(value = "Returns a list with all the Corporation Administrators.",tags = "05.Corporations")
+//    @ApiImplicitParams({
+//            @ApiImplicitParam(name = "Authorization", value = "Authorization token",
+//                    required = true, dataType = "string", paramType = "header")
+//    })
+    @Description("get all corporation users")
     @RequestMapping(value = "/flights", method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     public Iterable<Flight> readFlights() {
         return myService.readFlights();

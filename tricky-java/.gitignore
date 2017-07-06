@@ -1,7 +1,9 @@
 /target
 /.settings
 /.apt_generated
+/.idea
 
+tricky-java.iml
 nb-configuration.xml
 nbactions.xml
 
