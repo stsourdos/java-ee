@@ -20,7 +20,6 @@ public class GenericsExamples {
   }
 
   public class B extends A {
-      
   }
 
   public class C extends A {
